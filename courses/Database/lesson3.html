@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lesson 3 - Database | StudyPedia</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="../../styles/bootstrap.min.css" rel="stylesheet">
+	<link href="../../styles/style.css" rel="stylesheet">
+
+	<script src="../../scripts/jquery.min.js"></script>
+	<script type="text/javascript" src="../../scripts/script.js"></script>
+</head>
+<body>
+	<div class="d-flex">
+		<div id="sidebar-wrapper" class="bg-light border-right">
+			<div class="list-group list-group-flush">
+				<a href="../../index.html" class="sidebar-heading list-group-item list-group-item-action bg-light" title="Back to Home Page">&lang; Database</a>
+				<a href="index.html" class="list-group-item list-group-item-action bg-light">Welcome</a> <!-- FR4QIeZaPeM -->
+				<a href="lesson1.html" class="list-group-item list-group-item-action bg-light">1. Intoduction to Database</a> <!-- d11viALaCvA -->
+				<a href="lesson2.html" class="list-group-item list-group-item-action bg-light">2. DBMS</a> <!-- W6P58yb-edE -->
+				<a href="#" class="list-group-item list-group-item-action bg-light">3. Create, Use & Select SQL</a> <!-- i-W5bos0LlE -->
+				<a href="lesson4.html" class="list-group-item list-group-item-action bg-light">4. Insert, Update & Delete SQL</a> <!-- UizXzAHBSxE -->
+				<a href="lesson5.html" class="list-group-item list-group-item-action bg-light">5. Advanced SQL I</a> <!-- B9tS_JNbW00 -->
+				<a href="lesson6.html" class="list-group-item list-group-item-action bg-light">6. Advanced SQL II</a> <!-- ld8MUd32TN4 -->
+				<a href="quiz.html" class="list-group-item list-group-item-action bg-light">Quiz</a>
+			</div>
+		</div>
+
+		<div id="page-content-wrapper">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom position-fixed">
+				<span id="menu" class="glyphicon glyphicon-menu-hamburger" title="Menu" onclick="menuToggled()"></span>
+
+				<h3 class="ml-2">Create, Use & Select SQL</h3>
+			</nav>
+
+			<div class="container mt-5">
+				<iframe class="mt-3" src="https://www.youtube.com/embed/i-W5bos0LlE?autoplay=0"></iframe>
+
+				<h1 class="mt-4">Create, Use & Select SQL</h1>
+
+				<p class="text-justify">
+					The CREATE TABLE statement is used to create a new table in a database.
+					<h3>Syntax</h3>
+				</p>
+
+				<p class="text-justify">
+					<code>
+						CREATE TABLE table_name (
+						<ul>
+							<li-3>column1 datatype,<br></li-3>
+							<li-3>column2 datatype,<br></li-3>
+							<li-3>column3 datatype,<br></li-3>
+							....
+						</ul>
+						); 
+					</code>
+				</p>
+
+				<p class="text-justify">The column parameters specify the names of the columns of the table. The datatype parameter specifies the type of data the column can hold (e.g. varchar, integer, date, etc.).
+				</p>
+
+				<p class="text-justify">
+					<h3>SQL CREATE TABLE Example</h3>
+					The following example creates a table called "Persons" that contains five columns: PersonID, LastName, FirstName, Address, and City:
+				</p>
+
+				<p class="text-justify">
+					<code>
+						CREATE TABLE Persons (
+						<ul>
+						    <li-3>PersonID int,<br></li-3>
+		 				    <li-3>LastName varchar(255),<br></li-3>
+		    				<li-3>FirstName varchar(255),<br></li-3>
+		    				<li-3>Address varchar(255),<br></li-3>
+		    				<li-3>City varchar(255)<br></li-3>
+		   					....
+		   				</ul>
+						);
+					</code>
+				</p>
+
+				<p class="text-justify">
+					The PersonID column is of type int and will hold an integer. The LastName, FirstName, Address, and City columns are of type varchar and will hold characters, and the maximum length for these fields is 255 characters.
+				</p>
+
+				<p class="text-justify">
+					<h3>Create Table Using Another Table</h3>
+					A copy of an existing table can also be created using CREATE TABLE. The new table gets the same column definitions. All columns or specific columns can be selected. If you create a new table using an existing table, the new table will be filled with the existing values from the old table.
+				</p>
+
+				<p class="text-justify">
+					<h3>Syntax</h3>
+					<code>
+						CREATE TABLE new_table_name AS
+						<ul>
+						    <li-3>SELECT column1, column2,...<br></li-3>
+		 				    <li-3>FROM existing_table_name<br></li-3>
+		    				<li-3>WHERE ....; <br></li-3>
+		   				</ul>
+						); 
+					</code>
+				</p>
+
+				<p class="text-justify"> 
+					The following SQL creates a new table called "TestTables" (which is a copy of the "Customers" table): 
+				</p>
+
+				<p class="text-justify">
+					<h3>Example</h3>
+					<code>
+						CREATE TABLE TestTable AS
+						<ul>
+						    <li-3>SELECT customername, contactname<br></li-3>
+		 				    <li-3>FROM customers; <br></li-3>
+		   				</ul>
+						); 
+					</code>
+				</p>
+
+				<div>
+					<a href="lesson4.html" class="btn btn-primary float-right">Next &rang;</a>
+					<a href="lesson2.html" class="btn btn-danger">&lang; Prev</a>
+				</div>
+			</div>
+
+			<footer>
+				<p>Copyright &copy; 2019 StudyPedia</p>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>
+
+<script>
+	openNav();
+</script>

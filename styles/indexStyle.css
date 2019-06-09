@@ -1,0 +1,177 @@
+/* !
+ * ==============================
+ * Created by: Jason
+ * Email: jasonkurnaidj@yahoo.com
+ * ==============================
+ */
+
+html, body {
+	margin: 0;
+	padding: 0;
+	background: #f1f1f1;
+	font-family: sans-serif;
+	font-size: 100%;
+	overflow-x: hidden;
+}
+
+.bg-cust-primary {
+	background-color: #4db0e0;
+}
+
+.btn-cust-primary {
+	border: 2px solid #0097dd;
+	color: #fff;
+}
+
+.btn-cust-primary:hover {
+	color: #0083bf;
+	border-color: #0083bf;
+}
+
+
+#imageSlider .carousel-item {
+	height: 70vh;
+	min-height: 350px;
+	background-size: cover;
+}
+
+.partner-logo img {
+	width: 100%;
+	padding: 10px;
+	-webkit-filter: grayscale(100%);
+	-webkit-transition: .3s ease-in-out;
+	-moz-filter: grayscale(100%); 
+	-moz-transition: .3s ease-in-out;
+	-o-filter: grayscale(100%); 
+	-o-transition: .3s ease-in-out;
+}
+
+.partner-logo img:hover {
+	-webkit-filter: grayscale(0%);
+	-webkit-transition: .3s ease-in-out;
+	-moz-filter: grayscale(0%);
+	-moz-transition: .3s ease-in-out;
+	-o-filter: grayscale(0%);
+	-o-transition: .3s ease-in-out;
+}
+
+#binus {width: 55%;}
+#cambridge {margin-top: 2.5rem;}
+#harvard {margin-top: 1.5rem;}
+#stanford {margin-top: .5rem;}
+#google {width: 75%; margin-top: 2.75rem;}
+#ibm {width: 55%; margin-top: 3.5rem;}
+#microsoft {margin-top: 2rem;}
+#oracle {width: 75%;}
+
+#database {width: 50%;}
+
+
+#testimony .carousel-item {
+	min-height: 250px;
+}
+.carousel .testimony-content {
+	color: #fff;
+	position: relative;    
+	background: #9b9b9b;
+	padding: 15px;
+	margin: 0 0 20px 20px;
+}
+.carousel .testimony-content::before, .carousel .testimony-content::after {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	left: 0;
+	bottom: -20px;
+}
+.carousel .testimony-content::before {
+	width: 20px;
+	height: 20px;
+	background: #9b9b9b;
+	box-shadow: inset 12px 0 13px rgba(0,0,0,0.5);
+}
+.carousel .testimony-content::after {
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-bottom-color: #f1f1f1;
+    border-left-color: #f1f1f1;
+}
+
+.carousel .item .row > div:first-child .testimony-content {
+	margin: 0 20px 20px 0;
+}
+
+.carousel .item .row > div:first-child .media {
+	margin-left: 0;
+}
+
+.carousel .testimony-content p {
+	text-indent: 40px;
+    line-height: 21px;
+	margin: 0;
+}
+.carousel .testimony-content p::before {
+	content: '\94';
+    color: #fff;
+    font-weight: bold;
+    font-size: 68px;
+    line-height: 70px;
+    position: absolute;
+    left: -25px;
+    top: 0;
+}
+
+.media-left img {
+	width: 5rem;
+	height: 5rem;
+	border-radius: 50px;
+	margin-left: 2.5rem;
+}
+
+.carousel .overview {padding: 3px 0 0 15px;}
+.carousel .overview .details {padding: 5px 0 8px;}
+.carousel .overview b {
+	text-transform: uppercase;
+	color: #0097dd;
+}
+
+.carousel-indicators li {background-color: #000;}
+.star-rating li {padding: 0 2px;}
+.star-rating i {
+	font-size: 14px;
+	color: #ffdc12;
+}
+
+#testimony .carousel-control-prev-icon, #testimony .carousel-control-next-icon {
+	background-color: #000;
+}
+
+.footer-linked ul {margin-left: -2rem;}
+
+.footer-linked ul li {list-style: none; padding: 2px 0;}
+
+.footer-linked ul li a {
+	text-decoration: none;
+	color: #969696;
+}
+
+.footer-linked ul li a:hover {color: #f9f9f9;}
+
+#socialMedia ul li:hover .fa-facebook {color: #3b5998;}
+#socialMedia ul li:hover .fa-twitter {color: #1da1f2;}
+#socialMedia ul li:hover .fa-instagram {color: #458eff;}
+#socialMedia ul li:hover .fa-youtube {color: #c4302b;}
+
+
+@media(max-width: 620px) {
+	.partner-logo img {width: 50%;}
+
+	#binus {width: 35%;}
+	#google {width: 50%;}
+	#ibm {width: 35%;}
+	#microsoft {margin-top: 2rem;}
+	#oracle {width: 50%;}
+
+	#database {width: 45%;}
+}

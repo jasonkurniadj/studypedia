@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lesson 4 - Database | StudyPedia</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="../../styles/bootstrap.min.css" rel="stylesheet">
+	<link href="../../styles/style.css" rel="stylesheet">
+
+	<script src="../../scripts/jquery.min.js"></script>
+	<script type="text/javascript" src="../../scripts/script.js"></script>
+</head>
+<body>
+	<div class="d-flex">
+		<div id="sidebar-wrapper" class="bg-light border-right">
+			<div class="list-group list-group-flush">
+				<a href="../../index.html" class="sidebar-heading list-group-item list-group-item-action bg-light" title="Back to Home Page">&lang; Database</a>
+				<a href="index.html" class="list-group-item list-group-item-action bg-light">Welcome</a> <!-- FR4QIeZaPeM -->
+				<a href="lesson1.html" class="list-group-item list-group-item-action bg-light">1. Intoduction to Database</a> <!-- d11viALaCvA -->
+				<a href="lesson2.html" class="list-group-item list-group-item-action bg-light">2. DBMS</a> <!-- W6P58yb-edE -->
+				<a href="lesson3.html" class="list-group-item list-group-item-action bg-light">3. Create, Use & Select SQL</a> <!-- i-W5bos0LlE -->
+				<a href="#" class="list-group-item list-group-item-action bg-light">4. Insert, Update & Delete SQL</a> <!-- UizXzAHBSxE -->
+				<a href="lesson5.html" class="list-group-item list-group-item-action bg-light">5. Advanced SQL I</a> <!-- B9tS_JNbW00 -->
+				<a href="lesson6.html" class="list-group-item list-group-item-action bg-light">6. Advanced SQL II</a> <!-- ld8MUd32TN4 -->
+				<a href="quiz.html" class="list-group-item list-group-item-action bg-light">Quiz</a>
+			</div>
+		</div>
+
+		<div id="page-content-wrapper">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom position-fixed">
+				<span id="menu" class="glyphicon glyphicon-menu-hamburger" title="Menu" onclick="menuToggled()"></span>
+
+				<h3 class="ml-2">Insert, Update & Delete SQL</h3>
+			</nav>
+
+			<div class="container mt-5">
+				<iframe class="mt-3" src="https://www.youtube.com/embed/UizXzAHBSxE?autoplay=0"></iframe>
+
+				<h1 class="mt-4">Insert, Update & Delete SQL</h1>
+
+				<p class="text-justify">In addition to SELECT statements, UPDATE, DELETE, and INSERT SQL statements can also include WHERE clauses. Those WHERE clauses can contain subqueries in the same way that SELECT statements’WHERE clauses do.</p>
+
+				<p class="text-justify">For example, Zetec has just made a volume purchase deal with Olympic Sales and wants to provide Olympic with a retroactive 10 percent credit for all its purchases in the last month. You can give this credit with an UPDATE statement:</p>
+
+				<p class="text-justify">
+					<code>
+						UPDATE TRANSMASTER
+						<ul>
+						    <li-3>SET NetAmount = NetAmount * 0.9<br></li-3>
+		 				    <li-3>WHERE SaleDate > (CurrentDate – 30) DAY AND CustID =<br></li-3>
+		    				<li-3>(SELECT CustID FROM CUSTOMER WHERE Company = 'Olympic Sales') ;<br></li-3>
+		   				</ul>
+	   				</code>
+				</p>
+
+				<p class="text-justify">You can also have a correlated subquery in an UPDATE statement. Suppose the CUSTOMER table has a column LastMonthsMax, and Zetec wants to give such a credit for purchases that exceed LastMonthsMax for the customer:</p>
+
+				<p class="text-justify">
+					<code>
+						UPDATE TRANSMASTER TM	
+						<ul>
+						    <li-3>SET NetAmount = NetAmount * 0.9<br></li-3>
+		 				    <li-3>WHERE NetAmount><br></li-3>
+		    				<li-3>
+		    					<ul>
+		    						<li-3>(SELECT LastMonthsMax<br></li-3>
+		    						<li-3>FROM CUSTOMER C<br></li-3>
+		    						<li-3>WHERE C.CustID = TM.CustID) ;<br></li-3>
+		    					</ul>
+		    				</li-3>
+		   				</ul>
+	   				</code>
+				</p>
+
+				<p class="text-justify">Note that this subquery is correlated: The WHERE clause in the last line references both the CustID of the CUSTOMER row from the subquery and the CustID of the current TRANSMASTER row that is a candidate for updating.</p>
+
+				<p class="text-justify">A subquery in an UPDATE statement can also reference the table that is being updated. Suppose that Zetec wants to give a 10 percent credit to customers whose purchases have exceeded $10,000:</p>
+
+				<p class="text-justify">
+					<code>
+						UPDATE TRANSMASTER TM	
+						<ul>
+						    <li-3>SET NetAmount = NetAmount * 0.9<br></li-3>
+		 				    <li-3>WHERE 10000 < (SELECT SUM(NetAmount)<br></li-3>
+		    				<li-3>
+		    					<ul>
+		    						<li-3>FROM TRANSMASTER TM2 WHERE TM1.CustID = TM2.CustID);<br></li-3>
+		    					</ul>
+		    				</li-3>
+		   				</ul>
+	   				</code>
+				</p>
+
+				<p class="text-justify">The inner subquery calculates the SUM of the NetAmount column for all TRANSMASTER rows for the same customer. What does this mean? Suppose the customer with CustID = 37 has four rows in TRANSMASTER with values for NetAmount: 3000, 5000, 2000, and 1000. The SUM of NetAmount for this CustID is 11000.</p>
+
+				<p class="text-justify">The order in which the UPDATE statement processes the rows is defined by your implementation and is generally not predictable. The order may differ depending on how the rows are arranged on the disk. Assume that the implementation processes the rows for this CustID in this order: first the TRANSMASTER with a NetAmount of 3000, then the one with NetAmount= 5000, and so on.</p>
+
+				<p class="text-justify">After the first three rows for CustID 37 have been updated, their NetAmount values are 2700 (90 percent of $3,000), 4500 (90 percent of $5,000), and 1800 (90 percent of $2,000). Then, when you process the last TRANSMASTER row for CustID 37 (whose NetAmount is 1000), the SUM returned by the subquery would seem to be 10000, and the old NetAmount value of the last row for CustID 37.</p>
+
+				<p class="text-justify">Thus it would seem that the last row for CustID 37 isn’t updated, because the comparison with that SUM is not True — after all, 10000 is not less than 10000. But that is not how the UPDATE statement is defined when a subquery references the table that is being updated.</p>
+
+				<p class="text-justify">The subquery in a WHERE clause operates the same as a SELECT statement or an UPDATE statement. The same is true for DELETE and INSERT. To delete all of Olympic’s transactions, use this statement:</p>
+
+				<p class="text-justify">
+					<code>
+						DELETE FROM TRANSMASTER
+						<ul>
+						    <li-3>WHERE CustID =<br></li-3>
+		    				<li-3>
+		    					<ul>
+		    						<li-3>(SELECT CustID<br></li-3>
+		    						<li-3>FROM CUSTOMER C<br></li-3>
+		    						<li-3>WHERE Company = 'Olympic Sales') ;<br></li-3>
+		    					</ul>
+		    				</li-3>
+		   				</ul>
+	   				</code>
+				</p>
+
+				<p class="text-justify">As with UPDATE, DELETE subqueries can also be correlated and can also reference the table being deleted. The rules are similar to the rules for UPDATE subqueries. Suppose you want to delete all rows from TRANSMASTER for customers whose total NetAmount is larger than $10,000:</p>
+
+				<p class="text-justify">
+					<code>
+						DELETE FROM TRANSMASTER TM1
+						<ul>
+						    <li-3>WHERE 10000 < (SELECT SUM(NetAmount)<br></li-3>
+						    <li-3>FROM TRANSMASTER TM2<br></li-3>
+						    <li-3>WHERE TM1.CustID = TM2.CustID) ;<br></li-3>
+		   				</ul>
+	   				</code>
+				</p>
+
+				<p class="text-justify">This query deletes all rows from TRANSMASTER that have CustID 37, as well as any other customers with purchases exceeding $10,000. All references to TRANSMASTER in the subquery denote the contents of TRANSMASTER before any deletes by the current statement. So even when you’re deleting the last TRANSMASTER row for CustID 37, the subquery is evaluated on the original TRANSMASTER table and returns 11000.</p>
+
+				<p class="text-justify">This operation is called a cascading delete, because the deletion of a parent record must cascade to its associated child records. Otherwise the undeleted child records become orphans. In this case, they would be invoice detail lines that are in limbo because they are no longer connected to an invoice record.</p>
+
+				<p class="text-justify">If your implementation of SQL doesn’t support cascading deletes, you must do the deletions yourself. In this case, delete the appropriate records from the child table before deleting the corresponding record from the parent. That way, you don’t have orphan records in the child table, even for a second.</p>
+
+				<div>
+					<a href="lesson5.html" class="btn btn-primary float-right">Next &rang;</a>
+					<a href="lesson3.html" class="btn btn-danger">&lang; Prev</a>
+				</div>
+			</div>
+
+			<footer>
+				<p>Copyright &copy; 2019 StudyPedia</p>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>
+
+<script>
+	openNav();
+</script>

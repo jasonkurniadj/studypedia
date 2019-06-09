@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lesson 2 - Database | StudyPedia</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="../../styles/bootstrap.min.css" rel="stylesheet">
+	<link href="../../styles/style.css" rel="stylesheet">
+
+	<script src="../../scripts/jquery.min.js"></script>
+	<script type="text/javascript" src="../../scripts/script.js"></script>
+</head>
+<body>
+	<div class="d-flex">
+		<div id="sidebar-wrapper" class="bg-light border-right">
+			<div class="list-group list-group-flush">
+				<a href="../../index.html" class="sidebar-heading list-group-item list-group-item-action bg-light" title="Back to Home Page">&lang; Database</a>
+				<a href="index.html" class="list-group-item list-group-item-action bg-light">Welcome</a> <!-- FR4QIeZaPeM -->
+				<a href="lesson1.html" class="list-group-item list-group-item-action bg-light">1. Intoduction to Database</a> <!-- d11viALaCvA -->
+				<a href="#" class="list-group-item list-group-item-action bg-light">2. DBMS</a> <!-- W6P58yb-edE -->
+				<a href="lesson3.html" class="list-group-item list-group-item-action bg-light">3. Create, Use & Select SQL</a> <!-- i-W5bos0LlE -->
+				<a href="lesson4.html" class="list-group-item list-group-item-action bg-light">4. Insert, Update & Delete SQL</a> <!-- UizXzAHBSxE -->
+				<a href="lesson5.html" class="list-group-item list-group-item-action bg-light">5. Advanced SQL I</a> <!-- B9tS_JNbW00 -->
+				<a href="lesson6.html" class="list-group-item list-group-item-action bg-light">6. Advanced SQL II</a> <!-- ld8MUd32TN4 -->
+				<a href="quiz.html" class="list-group-item list-group-item-action bg-light">Quiz</a>
+			</div>
+		</div>
+
+		<div id="page-content-wrapper">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom position-fixed">
+				<span id="menu" class="glyphicon glyphicon-menu-hamburger" title="Menu" onclick="menuToggled()">Menu</span>
+
+				<h3 class="ml-2">DBMS</h3>
+			</nav>
+
+			<div class="container mt-5">
+				<iframe class="mt-3" src="https://www.youtube.com/embed/W6P58yb-edE?autoplay=0"></iframe>
+
+				<h1 class="mt-4">DBMS</h1>
+
+				<p class="text-justify">Database Management System (DBMS) refers to the technology solution used to optimize and manage the storage and retrieval of data from databases. DBMS offers a systematic approach to manage databases via an interface for users as well as workloads accessing the databases via apps. The management responsibilities for DBMS encompass the information within databases; the processes applied to databases such as access and modification; as well as the logical structure of the database. DBMS also facilitates additional administrative operations such as change management, disaster recovery, compliance and performance monitoring, among others.</p>
+
+				<p class="text-justify">
+				In order to facilitate these functions, DBMS has the following key components:
+				<ul>
+					<li>Software: DBMS is primarily a software system that can be considered as a management console or an interface to interact with and manage databases. The interfacing also spreads across real-world physical systems that contribute data to the backend databases. The OS, networking software and the hardware infrastructure is involved in creating, accessing, managing and processing the databases.</li>
+					<li>Data: DBMS contains operational data, access to database records and metadata as a resource to perform the necessary functionality. The data may include files with such as index files, administrative information and data dictionaries used to represent data flows, ownership, structure and relationships to other records or objects.</li>
+					<li>Procedures: While not a part of the DBMS software, procedures can be considered as instructions on using DBMS. The documented guidelines assist users in designing, modifying, managing and processing databases.</li>
+					<li>Database Languages: These are components of the DBMS used to access, modify, store and retrieve data items from databases; specify database schema; control user access and perform other associated database management operations. Types of DBMS languages include Data Definition Language (DDL), Data Manipulation Language (DML), Database Access Language (DAL) and Data Control Language (DCL).</li>
+					<li>Query Processor: As a fundamental component of the DBMS, the Query Processor acts as an intermediary between users and the DBMS data engine in order to communicate query requests. When users enter an instruction in SQL language, the command is executed from the high-level language instruction to a low-level language that the underlying machine can understand and process to perform the appropriate DBMS functionality. In addition to instruction parsing and translation, the Query Processor also optimizes queries to ensure fast processing and accurate results.</li>
+					<li>Runtime Database Manager: A centralized management component of DBMS that handles functionality associated with runtime data, which is commonly used for context-based database access. This component checks for user authorization to request the query; processes the approved queries; devises an optimal strategy for query execution; supports concurrency so that multiple users can simultaneously work on same databases; and ensures integrity of data recorded into the databases.</li>
+					<li>Database Manager: Unlike runtime database manager that handles queries and data at runtime, the database manager performs DBMS functionality associated with the data within databases. Database manager allows a set of commands to perform different DBMS operations that include creating, deleting, backup, restore, cloning and other database maintenance tasks. Database manager may also be used to update the database with patches from vendors.</li>
+					<li>Database Engine: This is the core software component within the DBMS solution that performs the core functions associated with data storage and retrieval. A database engine is also accessible via APIs that allow users or apps to create, read, write and delete records in databases.</li>
+					<li>Reporting: The report generator extracts useful information from DBMS files and displays it in structured format based on defined specifications. This information may be used for further analysis, decision making or business intelligence.</li>
+				</ul>
+				</p>
+
+				<p class="text-justify">
+					<img src="../../assets/dbms.jpg">
+					DBMS was designed to solve the fundamental problems associated with storing, managing, accessing, securing and auditing data in traditional file systems. Traditional database applications were developed on top of the databases, which led to challenges such as data redundancy, isolation, integrity constraints and difficulty in managing data access. A layer of abstraction was required between users or apps and the databases at a physical and logical level. By introducing a technology solution to manage databases in the form of DBMS software, the following key benefits are realized:
+					<ul>
+						<li>
+							Data Security: DBMS allows organizations to enforce policies that enable compliance and security. The databases are available for appropriate users as per organizational policies. The DBMS system is also responsible to maintain optimum performance of querying operations while ensuring the validity, security and consistency of data items updated to a database.
+						</li>
+						<li>
+							Data Sharing: Fast and efficient collaboration between users.
+						</li>
+						<li>
+							Data Access and Auditing: Controlled access to databases. Logging associated access activities allows organizations to audit for security and compliance.
+						</li>
+						<li>
+							Data Integration: Instead of operating island of database resources, a single interface is used to manage databases with logical and physical relationships.
+						</li>
+						<li>
+							Abstraction and Independence: Organizations can change the physical schema of database systems without necessitating changes to the logical schema that govern database relationships. As a result, organizations can upgrade storage and scale the infrastructure without impacting database operations. Similarly, changes to the logical schema can be applied without altering the apps and services that access the databases.
+						</li>
+						<li>
+							Uniform Management and Administration: A single console interface to perform basic administrative tasks makes the job easier for database admins and IT users.
+						</li>
+					</ul>
+				</p>
+				<p class="text-justify">For data-driven business organizations, DBMS can turn into extremely complex technology solutions that may require dedicated resources and in-house expertise. The size, cost and performance of a DBMS varies with the system architecture and use cases, and should therefore be evaluated accordingly. Also, a DBMS failure can incur significant losses to organizations that fail to maintain optimal functionality of a DBMS system.</p>
+
+				<div>
+					<a href="lesson3.html" class="btn btn-primary float-right">Next &rang;</a>
+					<a href="lesson1.html" class="btn btn-danger">&lang; Prev</a>
+				</div>
+			</div>
+
+			<footer>
+				<p>Copyright &copy; 2019 StudyPedia</p>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>
+
+<script>
+	openNav();
+</script>

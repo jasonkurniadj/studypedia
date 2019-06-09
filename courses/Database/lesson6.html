@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lesson 6 - Database | StudyPedia</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="../../styles/bootstrap.min.css" rel="stylesheet">
+	<link href="../../styles/style.css" rel="stylesheet">
+
+	<script src="../../scripts/jquery.min.js"></script>
+	<script type="text/javascript" src="../../scripts/script.js"></script>
+</head>
+<body>
+	<div class="d-flex">
+		<div id="sidebar-wrapper" class="bg-light border-right">
+			<div class="list-group list-group-flush">
+				<a href="../../index.html" class="sidebar-heading list-group-item list-group-item-action bg-light" title="Back to Home Page">&lang; Database</a>
+				<a href="index.html" class="list-group-item list-group-item-action bg-light">Welcome</a> <!-- FR4QIeZaPeM -->
+				<a href="lesson1.html" class="list-group-item list-group-item-action bg-light">1. Intoduction to Database</a> <!-- d11viALaCvA -->
+				<a href="lesson2.html" class="list-group-item list-group-item-action bg-light">2. DBMS</a> <!-- W6P58yb-edE -->
+				<a href="lesson3.html" class="list-group-item list-group-item-action bg-light">3. Create, Use & Select SQL</a> <!-- i-W5bos0LlE -->
+				<a href="lesson4.html" class="list-group-item list-group-item-action bg-light">4. Insert, Update & Delete SQL</a> <!-- UizXzAHBSxE -->
+				<a href="lesson5.html" class="list-group-item list-group-item-action bg-light">5. Advanced SQL I</a> <!-- B9tS_JNbW00 -->
+				<a href="#" class="list-group-item list-group-item-action bg-light">6. Advanced SQL II</a> <!-- ld8MUd32TN4 -->
+				<a href="quiz.html" class="list-group-item list-group-item-action bg-light">Quiz</a>
+			</div>
+		</div>
+
+		<div id="page-content-wrapper">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom position-fixed">
+				<span id="menu" class="glyphicon glyphicon-menu-hamburger" title="Menu" onclick="menuToggled()"></span>
+
+				<h3 class="ml-2">Advanced SQL II</h3>
+			</nav>
+
+			<div class="container mt-5">
+				<iframe class="mt-3" src="https://www.youtube.com/embed/ld8MUd32TN4?autoplay=0"></iframe>
+
+				<h1 class="mt-4">Advanced SQL II</h1>
+
+				<br>
+				<h2>Subquery</h2>
+				<p class="text-justify">
+					A subquery is a SQL statement that has another SQL query embedded in the WHERE or the HAVING clause. 
+					<h4>Syntax</h4>
+				</p>
+
+				<p class="text-justify">
+					<code>
+						<ul>
+						    <li-3>SELECT "column_name1"<br></li-3>
+		    				<li-3>FROM "table_name1"<br></li-3>
+		    				<li-3>WHERE "column_name2" [Comparison Operator]<br></li-3>
+		    				<li-3>(SELECT "column_name3"<br></li-3>
+		    				<li-3>FROM "table_name2"<br></li-3>
+		    				<li-3>WHERE "condition");<br></li-3>
+		   				</ul>
+		   			</code>
+				</p>
+
+				<p class="text-justify">
+					[Comparison Operator] could be equality operators such as =, >, <, >=, <=. It can also be a text operator such as "LIKE". The portion outside of the brackets is considered as the "outer query," while the portion inside is considered as the "inner query."
+				</p>
+
+
+				<p class="text-justify">
+					<h4>Example 1: Simple subquery</h4>
+					<code>
+						<ul>
+						    <li-3>SELECT SUM (Sales) FROM Store_Information<br></li-3>
+		    				<li-3>WHERE Store_Name IN<br></li-3>
+		    				<li-3>(SELECT Store_Name FROM Geography<br></li-3>
+		    				<li-3>WHERE Region_Name = 'West');<br></li-3>
+		   				</ul>
+		   			</code>
+				</p>
+
+				<p class="text-justify">
+					<h4>Example 2: Correlated subquery</h4>
+					If the inner query is dependent on the outer query, we will have a correlated subquery. An example of a correlated subquery is shown below:
+					<code>
+						<ul>
+						    <li-3>SELECT SUM (a1.Sales) FROM Store_Information a1<br></li-3>
+		    				<li-3>WHERE a1.Store_Name IN<br></li-3>
+		    				<li-3>(SELECT Store_Name FROM Geography a2<br></li-3>
+		    				<li-3>WHERE a2.Store_Name = a1.Store_Name);<br></li-3>
+		   				</ul>
+		   			</code>
+				</p>
+
+				<p class="text-justify">
+					Notice the WHERE clause in the inner query, where the condition involves a table from the outer query. 
+				</p>
+
+				<br>
+				<h2>Exists</h2>
+				<p class="text-justify">
+					EXISTS is a Boolean operator used in a subquery to test whether the inner query returns any row. If it does, then the outer query proceeds. If not, the outer query does not execute, and the entire SQL statement returns nothing. 
+					<h4>Syntax</h4>
+				</p>
+
+				<p class="text-justify">
+					<code>
+						<ul>
+						    <li-3>SELECT "column_name1"<br></li-3>
+		    				<li-3>FROM "table_name1"<br></li-3>
+		    				<li-3>WHERE EXISTS <br></li-3>
+		    				<li-3>(SELECT * <br></li-3>
+		    				<li-3>FROM "table_name2"<br></li-3>
+		    				<li-3>WHERE "condition");<br></li-3>
+		   				</ul>
+		   			</code>
+				</p>
+
+				<p class="text-justify">
+					Please note that instead of *, you can select one or more columns in the inner query. The effect will be identical. 
+				</p>
+
+				<p class="text-justify">
+					<h4>Example</h4>
+					<code>
+						<ul>
+						    <li-3>SELECT SUM(Sales) FROM Store_Information<br></li-3>
+		    				<li-3>WHERE EXISTS<br></li-3>
+		    				<li-3>(SELECT * FROM Geography<br></li-3>
+		    				<li-3>WHERE Region_Name = 'West');<br></li-3>
+		   				</ul>
+		   			</code>
+				</p>
+
+				<p class="text-justify">
+					At first, this may appear confusing, because the subquery includes the [region_name = 'West'] condition, yet the query summed up sales for stores in all regions. Upon closer inspection, we find that since the subquery returns more than zero row, the EXISTS condition is true, and the rows returned from the query "SELECT SUM(Sales) FROM Store_Information" become the final result. 
+				</p>
+
+				<br>
+				<h2>Case</h2>
+				<p class="text-justify">
+					CASE is used to provide if-then-else type of logic to SQL. There are two formats: The first is a Simple CASE expression, where we compare an expression to static values. The second is a Searched CASE expression, where we compare an expression to one or more logical conditions. 
+					<h4>Syntax</h4>
+				</p>
+
+				<p class="text-justify">
+					<code>
+						<ul>
+						    <li-3>SELECT CASE ("column_name") <br></li-3>
+		    				<li-3>
+		    					<ul>
+		    						<li-3>WHEN "value1" THEN "result1" <br></li-3>
+		    						<li-3>WHEN "value2" THEN "result2" <br></li-3>
+		    						<li-3>... <br></li-3>
+		    						<li-3>[ELSE "resultN"] <br></li-3>
+		    						<li-3>END<br></li-3>
+		    					</ul>
+		    				</li-3>
+		    				<li-3>FROM "table_name";<br></li-3>
+		   				</ul>
+		   			</code>
+				</p>
+
+				<p class="text-justify">
+					The ELSE clause is optional. 
+				</p>
+
+				<p class="text-justify">
+					<h4>Simple CASE Expression Example</h4>
+					<code>
+						<ul>
+						    <li-3>SELECT Store_Name, CASE Store_Name<br></li-3>
+		    				<li-3>
+		    					<ul>
+		    						<li-3>WHEN 'Los Angeles' THEN Sales * 2 <br></li-3>
+		    						<li-3>WHEN 'San Diego' THEN Sales * 1.5<br></li-3>
+		    						<li-3>ELSE Sales<br></li-3>
+		    						<li-3>END<br></li-3>
+		    					</ul>
+		    				</li-3>
+		    				<li-3>"New Sales",<br></li-3>
+		    				<li-3>Txn_Date<br></li-3>
+		    				<li-3>FROM Store_Information;<br></li-3>
+		   				</ul>
+		   			</code>
+				</p>
+
+				<p class="text-justify">
+					"New Sales" is the name given to the column with the CASE statement. This is an example of a simple CASE expression, because the conditions listed, 'Los Angeles' and 'San Diego', are static values. 	 
+				</p>
+
+				<p class="text-justify">
+					<h4>Searched CASE Expression Syntax</h4>
+				</p>
+
+				<p class="text-justify">
+					<code>
+						<ul>
+						    <li-3>SELECT CASE <br></li-3>
+		    				<li-3>
+		    					<ul>
+		    						<li-3>WHEN "condition1" THEN "result1" <br></li-3>
+		    						<li-3>WHEN "condition2" THEN "result2"  <br></li-3>
+		    						<li-3>... <br></li-3>
+		    						<li-3>[ELSE "resultN"] <br></li-3>
+		    						<li-3>END<br></li-3>
+		    					</ul>
+		    				</li-3>
+		    				<li-3>FROM "table_name";<br></li-3>
+		   				</ul>
+		   			</code>
+				</p>
+
+				<p class="text-justify">
+					The ELSE clause is optional. "Condition" can consist of one or more logical statements. 
+				</p>
+
+				<p class="text-justify">
+					<h4>Searched CASE Expression Example</h4>
+					<code>
+						<ul>
+						    <li-3>SELECT Store_Name, Txn_Date, CASE<br></li-3>
+		    				<li-3>
+		    					<ul>
+		    						<li-3>WHEN Sales >= 1000 THEN 'Good Day'<br></li-3>
+		    						<li-3>WHEN Sales >= 500 THEN 'OK Day'<br></li-3>
+		    						<li-3>ELSE 'Bad Day'<br></li-3>
+		    						<li-3>END<br></li-3>
+		    					</ul>
+		    				</li-3>
+		    				<li-3>"Sales Status"<br></li-3>
+		    				<li-3>FROM Store_Information;<br></li-3>
+		   				</ul>
+		   			</code>
+				</p>
+
+				<div>
+					<a href="quiz.html" class="btn btn-primary float-right">Quiz &rang;</a>
+					<a href="lesson5.html" class="btn btn-danger">&lang; Prev</a>
+				</div>
+			</div>
+
+			<footer>
+				<p>Copyright &copy; 2019 StudyPedia</p>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>
+
+<script>
+	openNav();
+</script>

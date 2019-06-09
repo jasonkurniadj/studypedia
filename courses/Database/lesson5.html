@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lesson 5 - Database | StudyPedia</title>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="../../styles/bootstrap.min.css" rel="stylesheet">
+	<link href="../../styles/style.css" rel="stylesheet">
+
+	<script src="../../scripts/jquery.min.js"></script>
+	<script type="text/javascript" src="../../scripts/script.js"></script>
+</head>
+<body>
+	<div class="d-flex">
+		<div id="sidebar-wrapper" class="bg-light border-right">
+			<div class="list-group list-group-flush">
+				<a href="../../index.html" class="sidebar-heading list-group-item list-group-item-action bg-light" title="Back to Home Page">&lang; Database</a>
+				<a href="index.html" class="list-group-item list-group-item-action bg-light">Welcome</a> <!-- FR4QIeZaPeM -->
+				<a href="lesson1.html" class="list-group-item list-group-item-action bg-light">1. Intoduction to Database</a> <!-- d11viALaCvA -->
+				<a href="lesson2.html" class="list-group-item list-group-item-action bg-light">2. DBMS</a> <!-- W6P58yb-edE -->
+				<a href="lesson3.html" class="list-group-item list-group-item-action bg-light">3. Create, Use & Select SQL</a> <!-- i-W5bos0LlE -->
+				<a href="lesson4.html" class="list-group-item list-group-item-action bg-light">4. Insert, Update & Delete SQL</a> <!-- UizXzAHBSxE -->
+				<a href="#" class="list-group-item list-group-item-action bg-light">5. Advanced SQL I</a> <!-- B9tS_JNbW00 -->
+				<a href="lesson6.html" class="list-group-item list-group-item-action bg-light">6. Advanced SQL II</a> <!-- ld8MUd32TN4 -->
+				<a href="quiz.html" class="list-group-item list-group-item-action bg-light">Quiz</a>
+			</div>
+		</div>
+
+		<div id="page-content-wrapper">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom position-fixed">
+				<span id="menu" class="glyphicon glyphicon-menu-hamburger" title="Menu" onclick="menuToggled()"></span>
+
+				<h3 class="ml-2">Advanced SQL I</h3>
+			</nav>
+
+			<div class="container mt-5">
+				<iframe class="mt-3" src="https://www.youtube.com/embed/B9tS_JNbW00?autoplay=0"></iframe>
+
+				<h1 class="mt-4">Advanced SQL I</h1>
+
+				<br>
+				<h2>Union</h2>
+				<p class="text-justify">
+					
+					The purpose of the SQL UNION query is to combine the results of two queries together while removing duplicates. In other words, when using UNION, only unique values are returned (similar to SELECT DISTINCT). 
+					<h4>Syntax</h4>
+				</p>
+
+				<p class="text-justify">
+					<ul>
+					    <li-3>[SQL Statement 1]<br></li-3>
+	    				<li-3>UNION<br></li-3>
+	    				<li-3>[SQL Statement 2];<br></li-3>
+	   				</ul>
+				</p>
+
+				<p class="text-justify">
+					<h4>Example</h4>
+					<code>
+						<ul>
+						    <li-3>SELECT Txn_Date FROM Store_Information<br></li-3>
+		    				<li-3>UNION<br></li-3>
+		    				<li-3>SELECT Txn_Date FROM Internet_Sales;<br></li-3>
+		   				</ul>
+	   				</code>
+				</p>
+
+				<br>
+				<h2>Intersect</h2>
+				<p class="text-justify">
+					The INTERSECT command in SQL combines the results of two SQL statement and returns only data that are present in both SQL statements.
+				</p>
+
+				<p class="text-justify">
+					INTERSECT can be thought of as an AND operator (value is selected only if it appears in both statements), while UNION and UNION ALL can be thought of as an OR operator (value is selected if it appears in either the first or the second statement). 
+					<h4>Syntax</h4>
+				</p>
+
+				<p class="text-justify">
+					<ul>
+					    <li-3>[SQL Statement 1]<br></li-3>
+	    				<li-3>INTERSECT<br></li-3>
+	    				<li-3>[SQL Statement 2];<br></li-3>
+	   				</ul>
+				</p>
+
+				<p class="text-justify">
+					The columns selected in [SQL Statement 1] and [SQL Statement 2] need to be of the same data type for INTERSECT to work. 
+				</p>
+
+				<p class="text-justify">
+					<h4>Example</h4>
+					<code>
+						<ul>
+						    <li-3>SELECT Txn_Date FROM Store_Information<br></li-3>
+		    				<li-3>INTERSECT<br></li-3>
+		    				<li-3>SELECT Txn_Date FROM Internet_Sales;<br></li-3>
+		   				</ul>
+		   			</code>
+				</p>
+
+				<p class="text-justify">
+					Please note that the INTERSECT command will only return distinct values. 
+				</p>
+
+				<br>
+				<h2>Minus</h2>
+				<p class="text-justify">
+					The MINUS command operates on two SQL statements. It takes all the results from the first SQL statement, and then subtract out the ones that are present in the second SQL statement to get the final result set. If the second SQL statement includes results not present in the first SQL statement, such results are ignored.
+					<h4>Syntax</h4>
+				</p>
+
+				<p class="text-justify">
+					<ul>
+					    <li-3>[SQL Statement 1]<br></li-3>
+	    				<li-3>MINUS<br></li-3>
+	    				<li-3>[SQL Statement 2];<br></li-3>
+	   				</ul>
+				</p>
+
+				<p class="text-justify">
+					The columns selected in [SQL Statement 1] and [SQL Statement 2] need to be of the same data type for MINUS to work. 
+				</p>
+
+				<p class="text-justify">
+					<h4>Example</h4>
+					<code>
+						<ul>
+						    <li-3>SELECT Txn_Date FROM Store_Information<br></li-3>
+		    				<li-3>MINUS<br></li-3>
+		    				<li-3>SELECT Txn_Date FROM Internet_Sales;<br></li-3>
+		   				</ul>
+		   			</code>
+				</p>
+
+				<p class="text-justify">
+					Please note that the MINUS command will only return distinct values. 	 
+				</p>
+
+				<br>
+				<h2>Limit</h2>
+				<p class="text-justify">
+					The LIMIT clause restricts the number of results returned from a SQL statement. It is available in MySQL. 
+					<h4>Syntax</h4>
+				</p>
+
+				<p class="text-justify">
+					<ul>
+					    <li-3>[SQL Statement 1]<br></li-3>
+	    				<li-3>LIMIT [N];<br></li-3>
+	   				</ul>
+				</p>
+
+				<p class="text-justify">
+					where [N] is the number of records to be returned. Please note that the ORDER BY clause is usually included in the SQL statement. Without the ORDER BY clause, the results we get would be dependent on what the database default is. 
+				</p>
+
+				<p class="text-justify">
+					<h4>Example</h4>
+					<code>
+						<ul>
+						    <li-3>SELECT Store_Name, Sales, Txn_Date<br></li-3>
+		    				<li-3>FROM Store_Information<br></li-3>
+		    				<li-3>ORDER BY Sales DESC<br></li-3>
+		    				<li-3>LIMIT 2;<br></li-3>
+		   				</ul>
+		   			</code>
+				</p>
+
+				<p class="text-justify">
+					The SQL Server equivalent to LIMIT is TOP. 	 
+				</p>
+
+				<br>
+				<h2>Top</h2>
+				<p class="text-justify">
+					The TOP keyword restricts the number of results returned from a SQL statement in Microsoft SQL Server. 
+					<h4>Syntax</h4>
+				</p>
+
+				<p class="text-justify">
+					<code>
+						<ul>
+						    <li-3>SELECT TOP [TOP argument] "column_name"<br></li-3>
+		    				<li-3>FROM "table_name";<br></li-3>
+		   				</ul>
+		   			</code>
+				</p>
+
+				<p class="text-justify">
+					where [TOP argument] can be one of two possible types:
+					<ol>
+						<li>[N]: The first N records are returned.</li>
+						<li>[M] PERCENT: The number of records corresponding to M% of all qualifying records are returned. </li>
+					</ol>
+				</p>
+
+				<p class="text-justify">
+					<h4>Example 1: [TOP argument] is an integer</h4>
+					To show the two highest sales amounts in Table Store_Information, we key in,
+					<code>
+						<ul>
+						    <li-3>SELECT TOP 2 Store_Name, Sales, Txn_Date<br></li-3>
+		    				<li-3>FROM Store_Information<br></li-3>
+		    				<li-3>ORDER BY Sales DESC<br></li-3>
+		   				</ul>
+		   			</code>
+				</p>
+
+				<p class="text-justify">
+					<h4>Example 2: [TOP argument] is a percentage</h4>
+					To show the top 25% of sales amounts from Table Store_Information, we key in,
+					<code>
+						<ul>
+						    <li-3>SELECT TOP 25 PERCENT Store_Name, Sales, Txn_Date<br></li-3>
+		    				<li-3>FROM Store_Information<br></li-3>
+		    				<li-3>ORDER BY Sales DESC<br></li-3>
+		   				</ul>
+		   			</code>
+				</p>
+
+				<div>
+					<a href="lesson6.html" class="btn btn-primary float-right">Next &rang;</a>
+					<a href="lesson4.html" class="btn btn-danger">&lang; Prev</a>
+				</div>
+			</div>
+
+			<footer>
+				<p>Copyright &copy; 2019 StudyPedia</p>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>
+
+<script>
+	openNav();
+</script>
